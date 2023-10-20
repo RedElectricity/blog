@@ -1,7 +1,8 @@
 +++
-title = 'HelloWorld'
+title = 'Hello World'
 date = 2023-10-05T23:55:09+08:00
-draft = false
+
+slug = 'HelloWorld'
 +++
 
 # 你好世界

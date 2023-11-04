@@ -7,6 +7,8 @@ slug = 'HelloWorld'
 
 # 你好世界
 
+<!--more-->
+
 > Hi! I am *RedElectricity*, you also can call me by *Byrond Conrad*
 
     无论如何, 在思考良久以后还是转为静态博客了

@@ -1,6 +1,5 @@
 ---
 title: "Jujutsu Kaisen Phantom Parade - Unpack log"
-draft: false
 date: 2024-06-24T01:24:32
 ---
 

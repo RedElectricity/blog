@@ -1,10 +1,7 @@
 ---
 title: "Jujutsu Kaisen Phantom Parade - Unpack log"
 draft: false
-_build:
-  render: never
-  list: never
-  publishResources: false
+date: 2024-06-24T01:24:32
 ---
 
 > 本文将会持续更新

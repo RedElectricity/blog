@@ -1,7 +1,7 @@
----
-title: "Jujutsu Kaisen Phantom Parade - Unpack log"
-date: 2024-06-24T01:24:32
----
++++
+title = "Jujutsu Kaisen Phantom Parade - Unpack log"
+date = 2024-06-24T01:24:32
++++
 
 > 本文将会持续更新
 

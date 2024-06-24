@@ -114,7 +114,7 @@ message Data {
 
 注意到程序调用了`FastAES`和另一位[先辈的遗产](https://github.com/sainz1407/Jujutsu-Kaisen-Phantom-Parade), 其实资源文件的加密是AES
 
-> ~~TMD花了我几天时间, 我还以为没变. 还是先辈拯救了我~~
+> ~~TMD花了我几天时间, 我还以为加密方法没变. 我都快哭晕在IDA里了~~
 
 ### End of this section
 

@@ -1,62 +1,51 @@
 baseURL = 'https://blog.134256.xyz/'
 languageCode = 'zh-cn'
 title = "Byron's Blog"
-theme = 'poison'
+theme = 'hugo-theme-stack'
 
-paginate = 10
 
-[params]
-    brand = "Byron's Blog"                      
-    description = "Is what define us?"
-    dark_mode = true
+[Params]
+description = "Is what define us?"
+rssFullContent = true
+mainSections = ["posts"]
 
-    front_page_content = ["posts"]
-    menu = [
-        {Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
-        {Name = "Tags", URL = "/tags/", HasChildren = false},
-    ]
+[Params.Article]
+toc = true
+readingTime = true
+math = true
 
-    github_url = "https://github.com/RedElectricity"
-    twitter_url = "https://twitter.com/ElectricityRed"
-    email_url = "mailto://redelectricity@outlook.com"
+[Params.sidebar]
+subtitle = "Is what define us?"
 
-    rss_icon = true
-    rss_section = "posts"
+[Params.sidebar.avatar]
+enabled = false
+local = false
+src = "https://avatars.githubusercontent.com/u/75127571"
 
-    # Hex colors for your sidebar.
-    sidebar_bg_color = "#202020"            # default is #202020
-    sidebar_img_border_color = "#515151"    # default is #515151
-    sidebar_p_color = "#909090"             # default is #909090
-    sidebar_h1_color = "#FFF"               # default is #FFF
-    sidebar_a_color = "#FFF"                # default is #FFF
-    sidebar_socials_color = "#FFF"          # default is #FFF
-    moon_sun_color = "#FFF"                 # default is #FFF
-    moon_sun_background_color = "#515151"   # default is #515151
+[menu]
+[[menu.article]]
+    name = "Article"
+    url = "/"
+    weight = 10
+    identifier = "home"
 
-    # Hex colors for your content in light mode.
-    text_color = "#222"             # default is #222
-    content_bg_color = "#FAF9F6"    # default is #FAF9F6
-    post_title_color = "#303030"    # default is #303030
-    list_color = "#5a5a5a"          # default is #5a5a5a
-    link_color = "#268bd2"          # default is #268bd2
-    date_color = "#515151"          # default is #515151
-    table_border_color = "#E5E5E5"  # default is #E5E5E5
-    table_stripe_color = "#F9F9F9"  # default is #F9F9F9
+[[menu.social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/RedElectricity"
+[menu.social.params]
+icon = "brand-github"
 
-    # Hex colors for your content in dark mode
-    text_color_dark = "#eee"                # default is #eee
-    content_bg_color_dark = "#121212"       # default is #121212
-    post_title_color_dark = "#DBE2E9"       # default is #DBE2E9
-    list_color_dark = "#9d9d9d"             # default is #9d9d9d
-    link_color_dark = "#268bd2"             # default is #268bd2
-    date_color_dark = "#9a9a9a"             # default is #9a9a9a
-    table_border_color_dark = "#515151"     # default is #515151
-    table_stripe_color_dark = "#202020"     # default is #202020
-    code_color = "#bf616a"                  # default is #bf616a
-    code_background_color = "#E5E5E5"       # default is #E5E5E5
-    code_color_dark = "#ff7f7f"             # default is #ff7f7f
-    code_background_color_dark = "#393D47"  # default is #393D47
+[[menu.social]]
+identifier = "twitter"
+name = "Twitter"
+url = "https://twitter.com/ElectricityRed"
+[menu.social.params]
+icon = "brand-twitter"
 
-[taxonomies]
-    series = 'series'
-    tags = 'tags'
+[[menu.social]]
+identifier = "weibo"
+name = "Weibo"
+url = "https://www.weibo.com/u/7891027455"
+[menu.social.params]
+icon = "brand-weibo"

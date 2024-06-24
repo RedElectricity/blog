@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本文将会持续更新 本文仅供学习使用, 请勿用于各种非个人的行为或者商业性行为 😭先辈的遗产真是节省了我大部分时间 前言\r至于我为什么会开始逆向Jujutsu Kaisen Phantom Parade, 原因还是里面的Live2D过于好看(虎子和五条是不错的) 真是百变虎子, 衣服挺多的 再也不解包日服游戏了 解包过程\r分析游戏的整体\r首先, 我们要分两个部分: 电脑版(DMM)和手机版 总的来说, 他们都是使用il2cpp编译的(废话, 现在哪里有游戏还是用mono) 电脑版: 直接从DMM上获取即可, 但是这条路基本上是死的. 为什么呢? 只要你把游戏的逻辑文件 GameAssembly.dll 拖到 Detect it easy 便可得知游戏是用的 HyperTech Crackproof (我看到这个基本上就知道要转战了), 现在网上也没有对于这个壳的脱壳方法. 并且我的电脑没法用 KsDumper 手机版: 这个是真好解包, 用 GameGuardian 加上脚本直接可以dump出未加密的 global-metadata.dat 和 libil2cpp.so. 从文件来看, 解包apk中只有 global-metadata.dat 是加密的. 因此, 为了方便(偷懒), 我们选择使用手机版+模拟器进行. 关于octo\r根据网络上仅有的几个解包教程, octo包很有可能是cyberagent自己搞的资源管理类包, 并且跟cyberagent有关的公司和工作室有使用这个包. 其中在octo文件夹里面左翻右翻其中就有个叫 octocacheevai 的文件, 根据先辈的遗产Nire的解包, 这个文件用于存储在v1文件夹下资源的目录以及其名称, 描述的protobuf如下 syntax = &#34;proto3&#34;; message Database { int32 revision = 1; repeated Data assetBundleList = 2; repeated string _tagname = 3; repeated Data resourceList = 4; string urlFormat = 5; } message Data { int32 id = 1; //id={0} string filepath = 2; string name = 3; //name={1} int32 size = 4; //size={2} uint32 crc = 5; //crc={3} repeated int32 tags = 6; //tags=[{4}] int32 priority = 7; repeated int32 deps = 8; //deps=[{5}] State state = 9; //state={6}?">
+<title>Jujutsu Kaisen Phantom Parade - Unpack log</title>
+
+<link rel='canonical' href='http://localhost:1313/posts/jujutsuphanpara_dump/'>
+
+<link rel="stylesheet" href="/scss/style.min.e8c7fca7d1c9294aa7a4f3426c225ee26540f7d94e39be0b5a4a5c8a49ca5a25.css"><meta property='og:title' content="Jujutsu Kaisen Phantom Parade - Unpack log">
+<meta property='og:description' content="本文将会持续更新 本文仅供学习使用, 请勿用于各种非个人的行为或者商业性行为 😭先辈的遗产真是节省了我大部分时间 前言\r至于我为什么会开始逆向Jujutsu Kaisen Phantom Parade, 原因还是里面的Live2D过于好看(虎子和五条是不错的) 真是百变虎子, 衣服挺多的 再也不解包日服游戏了 解包过程\r分析游戏的整体\r首先, 我们要分两个部分: 电脑版(DMM)和手机版 总的来说, 他们都是使用il2cpp编译的(废话, 现在哪里有游戏还是用mono) 电脑版: 直接从DMM上获取即可, 但是这条路基本上是死的. 为什么呢? 只要你把游戏的逻辑文件 GameAssembly.dll 拖到 Detect it easy 便可得知游戏是用的 HyperTech Crackproof (我看到这个基本上就知道要转战了), 现在网上也没有对于这个壳的脱壳方法. 并且我的电脑没法用 KsDumper 手机版: 这个是真好解包, 用 GameGuardian 加上脚本直接可以dump出未加密的 global-metadata.dat 和 libil2cpp.so. 从文件来看, 解包apk中只有 global-metadata.dat 是加密的. 因此, 为了方便(偷懒), 我们选择使用手机版+模拟器进行. 关于octo\r根据网络上仅有的几个解包教程, octo包很有可能是cyberagent自己搞的资源管理类包, 并且跟cyberagent有关的公司和工作室有使用这个包. 其中在octo文件夹里面左翻右翻其中就有个叫 octocacheevai 的文件, 根据先辈的遗产Nire的解包, 这个文件用于存储在v1文件夹下资源的目录以及其名称, 描述的protobuf如下 syntax = &#34;proto3&#34;; message Database { int32 revision = 1; repeated Data assetBundleList = 2; repeated string _tagname = 3; repeated Data resourceList = 4; string urlFormat = 5; } message Data { int32 id = 1; //id={0} string filepath = 2; string name = 3; //name={1} int32 size = 4; //size={2} uint32 crc = 5; //crc={3} repeated int32 tags = 6; //tags=[{4}] int32 priority = 7; repeated int32 deps = 8; //deps=[{5}] State state = 9; //state={6}?">
+<meta property='og:url' content='http://localhost:1313/posts/jujutsuphanpara_dump/'>
+<meta property='og:site_name' content='Byron&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2024-06-24T01:24:32&#43;00:00'/><meta property='article:modified_time' content='2024-06-24T01:24:32&#43;00:00'/>
+<meta name="twitter:title" content="Jujutsu Kaisen Phantom Parade - Unpack log">
+<meta name="twitter:description" content="本文将会持续更新 本文仅供学习使用, 请勿用于各种非个人的行为或者商业性行为 😭先辈的遗产真是节省了我大部分时间 前言\r至于我为什么会开始逆向Jujutsu Kaisen Phantom Parade, 原因还是里面的Live2D过于好看(虎子和五条是不错的) 真是百变虎子, 衣服挺多的 再也不解包日服游戏了 解包过程\r分析游戏的整体\r首先, 我们要分两个部分: 电脑版(DMM)和手机版 总的来说, 他们都是使用il2cpp编译的(废话, 现在哪里有游戏还是用mono) 电脑版: 直接从DMM上获取即可, 但是这条路基本上是死的. 为什么呢? 只要你把游戏的逻辑文件 GameAssembly.dll 拖到 Detect it easy 便可得知游戏是用的 HyperTech Crackproof (我看到这个基本上就知道要转战了), 现在网上也没有对于这个壳的脱壳方法. 并且我的电脑没法用 KsDumper 手机版: 这个是真好解包, 用 GameGuardian 加上脚本直接可以dump出未加密的 global-metadata.dat 和 libil2cpp.so. 从文件来看, 解包apk中只有 global-metadata.dat 是加密的. 因此, 为了方便(偷懒), 我们选择使用手机版+模拟器进行. 关于octo\r根据网络上仅有的几个解包教程, octo包很有可能是cyberagent自己搞的资源管理类包, 并且跟cyberagent有关的公司和工作室有使用这个包. 其中在octo文件夹里面左翻右翻其中就有个叫 octocacheevai 的文件, 根据先辈的遗产Nire的解包, 这个文件用于存储在v1文件夹下资源的目录以及其名称, 描述的protobuf如下 syntax = &#34;proto3&#34;; message Database { int32 revision = 1; repeated Data assetBundleList = 2; repeated string _tagname = 3; repeated Data resourceList = 4; string urlFormat = 5; } message Data { int32 id = 1; //id={0} string filepath = 2; string name = 3; //name={1} int32 size = 4; //size={2} uint32 crc = 5; //crc={3} repeated int32 tags = 6; //tags=[{4}] int32 priority = 7; repeated int32 deps = 8; //deps=[{5}] State state = 9; //state={6}?">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Byron&#39;s Blog</a></h1>
+            <h2 class="site-description">Is what define us?</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/RedElectricity'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/ElectricityRed'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.weibo.com/u/7891027455'
+                        target="_blank"
+                        title="Weibo"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-weibo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 14.127c0 3.073 -3.502 5.873 -8 5.873c-4.126 0 -8 -2.224 -8 -5.565c0 -1.78 .984 -3.737 2.7 -5.567c2.362 -2.51 5.193 -3.687 6.551 -2.238c.415 .44 .752 1.39 .749 2.062c2 -1.615 4.308 .387 3.5 2.693c1.26 .557 2.5 .538 2.5 2.742z" /><path d="M15 4h1a5 5 0 0 1 5 5v1" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/jujutsuphanpara_dump/">Jujutsu Kaisen Phantom Parade - Unpack log</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 24, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>本文将会持续更新</p>
+</blockquote>
+<blockquote>
+<p>本文仅供学习使用, 请勿用于各种非个人的行为或者商业性行为
+😭先辈的遗产真是节省了我大部分时间</p>
+</blockquote>
+<h2 id="前言">前言
+</h2><p>至于我为什么会开始逆向Jujutsu Kaisen Phantom Parade, 原因还是里面的Live2D过于好看(虎子和五条是不错的)</p>
+<p>真是百变虎子, 衣服挺多的</p>
+<p><del>再也不解包日服游戏了</del></p>
+<h2 id="解包过程">解包过程
+</h2><h3 id="分析游戏的整体">分析游戏的整体
+</h3><p>首先, 我们要分两个部分: 电脑版(DMM)和手机版</p>
+<p>总的来说, 他们都是使用il2cpp编译的(<del>废话, 现在哪里有游戏还是用mono</del>)</p>
+<ul>
+<li>电脑版: 直接从DMM上获取即可, 但是这条路基本上是死的. 为什么呢? 只要你把游戏的逻辑文件 <code>GameAssembly.dll</code> 拖到 <code>Detect it easy</code> 便可得知游戏是用的 <code>HyperTech Crackproof</code> (我看到这个基本上就知道要转战了), 现在网上也没有对于这个壳的脱壳方法. 并且我的电脑没法用 <code>KsDumper</code></li>
+<li>手机版: 这个是真好解包, 用 <code>GameGuardian</code> 加上<a class="link" href="https://gameguardian.net/forum/files/file/2769-hidden-global-metadatadat-searcher/"  target="_blank" rel="noopener"
+    >脚本</a>直接可以dump出未加密的 <code>global-metadata.dat</code> 和 <code>libil2cpp.so</code>. 从文件来看, 解包apk中只有 <code>global-metadata.dat</code> 是加密的.</li>
+</ul>
+<p>因此, 为了方便(<del>偷懒</del>), 我们选择使用手机版+模拟器进行.</p>
+<h4 id="关于octo">关于octo
+</h4><p>根据网络上仅有的几个解包教程, octo包很有可能是cyberagent自己搞的资源管理类包, 并且跟cyberagent有关的公司和工作室有使用这个包.</p>
+<p>其中在octo文件夹里面左翻右翻其中就有个叫 <code>octocacheevai</code> 的文件, 根据先辈的遗产<a class="link" href="https://github.com/190nm/rein-kuro"  target="_blank" rel="noopener"
+    >Nire的解包</a>, 这个文件用于存储在v1文件夹下资源的目录以及其名称, 描述的protobuf如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-protobuf" data-lang="protobuf"><span style="display:flex;"><span>syntax <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proto3&#34;</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">message</span> <span style="color:#a6e22e">Database</span> {<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">int32</span> revision <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">repeated</span> Data assetBundleList <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">repeated</span> <span style="color:#66d9ef">string</span> _tagname <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">repeated</span> Data resourceList <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">string</span> urlFormat <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>}<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">message</span> <span style="color:#a6e22e">Data</span> {<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">int32</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//id={0}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">string</span> filepath <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">string</span> name <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">//name={1}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int32</span> size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">//size={2}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">uint32</span> crc <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>; <span style="color:#75715e">//crc={3}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">repeated</span> <span style="color:#66d9ef">int32</span> tags <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>; <span style="color:#75715e">//tags=[{4}]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int32</span> priority <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">repeated</span> <span style="color:#66d9ef">int32</span> deps <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>; <span style="color:#75715e">//deps=[{5}]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    State state <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>; <span style="color:#75715e">//state={6}?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">string</span> md5 <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">//md5={7}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">string</span> objectName <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>; <span style="color:#75715e">//objectName={8}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">uint64</span> generation <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>; <span style="color:#75715e">//generation={9}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">enum</span> State {<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>		NONE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>		ADD <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>		UPDATE <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>		LATEST <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>		DELETE <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	}<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>}<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="提取密钥">提取密钥
+</h3><p><del>你以为dump出 <code>global-metadata.dat</code> 等有用吗? 不, 这并没有什么用. 我们将采取一种最方便的办法, dump内存.</del></p>
+<p>注意到先辈遗产中的代码片段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e"># All currently known magic numbers to try</span>
+</span></span><span style="display:flex;"><span>    en <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;st4q3c7p1ibgwdhm&#34;</span>, <span style="color:#e6db74">&#34;LvAUtf+tnz&#34;</span>)
+</span></span><span style="display:flex;"><span>    jp <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;p4nohhrnijynw45m&#34;</span>, <span style="color:#e6db74">&#34;LvAUtf+tnz&#34;</span>)
+</span></span><span style="display:flex;"><span>    encbt <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;p4nohhrnijynw45m&#34;</span>, <span style="color:#e6db74">&#34;LvAUtf+tnz&#34;</span>)
+</span></span><span style="display:flex;"><span>    jpcbt <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;ezj749zwskuskg46&#34;</span>, <span style="color:#e6db74">&#34;LvAUtf+tnz&#34;</span>)
+</span></span></code></pre></div><p>注意到IV其实是不变的(<del>这对于所有使用了octo的游戏IV都是不变的</del>), 启动Nire, 在 <code>GameGuardian</code> 中用IV搜一搜, 得到内存范围再dump出内存片段.</p>
+<p>注意到IV附近的内容, 其中有一段是我们的Key, 按葫芦画瓢便可以得到Jujutsu Kaisen Phantom Parade的密钥</p>
+<blockquote>
+<p>这是什么呢?</p>
+<p>U2FsdGVkX18IhwXLCGzYEBKTdqrPt91MVF3avXiuaKJN5cQME2qOEmsCKnybO1+k7I2GKXBbCoLUIwVMmN80wQ==</p>
+<p>Hint: AeS Key:Game Domain</p>
+</blockquote>
+<p>获得到密钥之后你就可以使用<a class="link" href="https://github.com/190nm/rein-kuro"  target="_blank" rel="noopener"
+    >Nire的解包</a>解密资源清单到下一步.</p>
+<h3 id="关于-criware-的密钥">关于 <code>Criware</code> 的密钥
+</h3><h3 id="解密资源">解密资源
+</h3><p><del>你以为解密一个资源清单有什么用吗? 哈哈其实资源也是加密的</del></p>
+<p>资源总的来说分两种: 一种是 <code>Asset Bundle</code> 一种是资源文件(存储语音和视频)</p>
+<p>我们的主要目的是提取 <code>Asset Bundle</code> , 资源文件大部分是使用 <code>Criware</code> 加密</p>
+<p><del>正当你以为前面先辈的遗产有用, 正当你以为dump出 <code>global-metadata.dat</code> 等有用. 其实都错了.</del></p>
+<p>当你拖进IDA找到对应的解密函数时其实根本就找不出先辈找出来的那几个函数, 因此我们便可以判断不是和Nire等一样的加密.</p>
+<p>注意到程序调用了<code>FastAES</code>和另一位<a class="link" href="https://github.com/sainz1407/Jujutsu-Kaisen-Phantom-Parade"  target="_blank" rel="noopener"
+    >先辈的遗产</a>, 其实资源文件的加密是AES</p>
+<blockquote>
+<p><del>TMD花了我几天时间, 我还以为没变. 还是先辈拯救了我</del></p>
+</blockquote>
+<h3 id="eof-1">EOF 1
+</h3><p>其实到这里大部分解包的基础就已经完成, 接下来是对解包出来的 <code>.unity3d</code> 进行加工.</p>
+<h2 id="资源的运用">资源的运用
+</h2><blockquote>
+<p>ERROR: 本Section正在施工中&hellip;</p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Byron&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

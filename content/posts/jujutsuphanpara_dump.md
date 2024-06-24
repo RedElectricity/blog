@@ -1,6 +1,7 @@
 +++
 title = "Jujutsu Kaisen Phantom Parade - Unpack log"
 date = 2024-06-24T01:24:32
+draft = false
 +++
 
 > 本文将会持续更新
@@ -95,6 +96,10 @@ message Data {
 
 获得到密钥之后你就可以使用[Nire的解包](https://github.com/190nm/rein-kuro)解密资源清单到下一步.
 
+### 关于 `Criware` 的密钥
+
+最简单也最方便的办法: 全自动的 [lico-n/ZygiskUnityCriwareKeylogger: Extracts CriWare encryption keys for Unity games via Zygisk.](https://github.com/lico-n/ZygiskUnityCriwareKeylogger)
+
 ### 解密资源
 
 ~~你以为解密一个资源清单有什么用吗? 哈哈其实资源也是加密的~~
@@ -111,7 +116,7 @@ message Data {
 
 > ~~TMD花了我几天时间, 我还以为没变. 还是先辈拯救了我~~
 
-### EOF 1
+### End of this section
 
 其实到这里大部分解包的基础就已经完成, 接下来是对解包出来的 `.unity3d` 进行加工.
 

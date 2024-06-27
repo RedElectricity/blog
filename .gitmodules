@@ -1,6 +1,3 @@
 [submodule "themes/hugo-theme-stack"]
 	path = themes/hugo-theme-stack
 	url = https://github.com/CaiJimmy/hugo-theme-stack/
-[submodule "themes/plugins-live2d"]
-	path = themes/plugins-live2d
-	url = https://github.com/fixit-theme/hugo-shortcode-plugins-live2d.git

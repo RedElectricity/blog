@@ -3,7 +3,7 @@ title = '自学论'
 slug = 'self-learn'
 date = 2023-10-20T23:51:23+08:00
 
-tags = ['随笔','学习']
+keywords = ['随笔','学习']
 categories = ['随笔']
 +++
 

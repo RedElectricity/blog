@@ -86,7 +86,9 @@
 &lt;p&gt;获得到密钥之后你就可以使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/190nm/rein-kuro&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Nire的解包&lt;/a&gt;解密资源清单到下一步.&lt;/p&gt;
 &lt;h3 id=&#34;关于-criware-的密钥&#34;&gt;关于 &lt;code&gt;Criware&lt;/code&gt; 的密钥
-&lt;/h3&gt;&lt;h3 id=&#34;解密资源&#34;&gt;解密资源
+&lt;/h3&gt;&lt;p&gt;最简单也最方便的办法: 全自动的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/lico-n/ZygiskUnityCriwareKeylogger&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lico-n/ZygiskUnityCriwareKeylogger: Extracts CriWare encryption keys for Unity games via Zygisk.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;解密资源&#34;&gt;解密资源
 &lt;/h3&gt;&lt;p&gt;&lt;del&gt;你以为解密一个资源清单有什么用吗? 哈哈其实资源也是加密的&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;资源总的来说分两种: 一种是 &lt;code&gt;Asset Bundle&lt;/code&gt; 一种是资源文件(存储语音和视频)&lt;/p&gt;
 &lt;p&gt;我们的主要目的是提取 &lt;code&gt;Asset Bundle&lt;/code&gt; , 资源文件大部分是使用 &lt;code&gt;Criware&lt;/code&gt; 加密&lt;/p&gt;
@@ -95,9 +97,9 @@
 &lt;p&gt;注意到程序调用了&lt;code&gt;FastAES&lt;/code&gt;和另一位&lt;a class=&#34;link&#34; href=&#34;https://github.com/sainz1407/Jujutsu-Kaisen-Phantom-Parade&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;先辈的遗产&lt;/a&gt;, 其实资源文件的加密是AES&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;del&gt;TMD花了我几天时间, 我还以为没变. 还是先辈拯救了我&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;TMD花了我几天时间, 我还以为加密方法没变. 我都快哭晕在IDA里了&lt;/del&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;eof-1&#34;&gt;EOF 1
+&lt;h3 id=&#34;end-of-this-section&#34;&gt;End of this section
 &lt;/h3&gt;&lt;p&gt;其实到这里大部分解包的基础就已经完成, 接下来是对解包出来的 &lt;code&gt;.unity3d&lt;/code&gt; 进行加工.&lt;/p&gt;
 &lt;h2 id=&#34;资源的运用&#34;&gt;资源的运用
 &lt;/h2&gt;&lt;blockquote&gt;

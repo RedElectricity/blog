@@ -9,25 +9,46 @@ description = "Is what define us?"
 rssFullContent = true
 mainSections = ["posts"]
 
+[[Params.widgets.homepage]]
+type = "search"
+
+
+[[Params.widgets.homepage]]
+type = "categories"
+
+[Params.widgets.homepage.params]
+limit = 10
+
+[[Params.widgets.page]]
+type = "toc"
+
 [Params.Article]
 toc = true
 readingTime = true
 math = true
 
-[Params.sidebar]
+[Params.Sidebar]
 subtitle = "Is what define us?"
 
-[Params.sidebar.avatar]
+[Params.Sidebar.avatar]
 enabled = false
 local = false
 src = "https://avatars.githubusercontent.com/u/75127571"
 
+[Params.Footer]
+customText = 'Powered by RedElectricity with Love❤️'
+
 [menu]
-[[menu.article]]
-    name = "Article"
+[[menu.main]]
+    name = "Articles"
     url = "/"
     weight = 10
     identifier = "home"
+[[menu.main]]
+    name = "Categories"
+    url = "/categories"
+    weight = 10
+    identifier = "categories"
 
 [[menu.social]]
 identifier = "github"

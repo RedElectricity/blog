@@ -42,7 +42,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -117,6 +117,26 @@
         </ol><ol class="menu" id="main-menu">
         
         
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>Articles</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
         <li class="menu-bottom-section">
             <ol class="menu">
 
@@ -146,13 +166,66 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#解包过程">解包过程</a>
+      <ul>
+        <li><a href="#分析游戏的整体">分析游戏的整体</a></li>
+        <li><a href="#提取密钥">提取密钥</a></li>
+        <li><a href="#关于-criware-的密钥">关于 <code>Criware</code> 的密钥</a></li>
+        <li><a href="#解密资源">解密资源</a></li>
+        <li><a href="#end-of-this-section">End of this section</a></li>
+      </ul>
+    </li>
+    <li><a href="#资源的运用">资源的运用</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/reverse/" >
+                Reverse
+            </a>
+        
+            <a href="/categories/%E5%91%AA%E8%A1%93%E5%BB%BB%E6%88%A6/" >
+                呪術廻戦
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
@@ -283,7 +356,9 @@
 <p>获得到密钥之后你就可以使用<a class="link" href="https://github.com/190nm/rein-kuro"  target="_blank" rel="noopener"
     >Nire的解包</a>解密资源清单到下一步.</p>
 <h3 id="关于-criware-的密钥">关于 <code>Criware</code> 的密钥
-</h3><h3 id="解密资源">解密资源
+</h3><p>最简单也最方便的办法: 全自动的 <a class="link" href="https://github.com/lico-n/ZygiskUnityCriwareKeylogger"  target="_blank" rel="noopener"
+    >lico-n/ZygiskUnityCriwareKeylogger: Extracts CriWare encryption keys for Unity games via Zygisk.</a></p>
+<h3 id="解密资源">解密资源
 </h3><p><del>你以为解密一个资源清单有什么用吗? 哈哈其实资源也是加密的</del></p>
 <p>资源总的来说分两种: 一种是 <code>Asset Bundle</code> 一种是资源文件(存储语音和视频)</p>
 <p>我们的主要目的是提取 <code>Asset Bundle</code> , 资源文件大部分是使用 <code>Criware</code> 加密</p>
@@ -292,9 +367,9 @@
 <p>注意到程序调用了<code>FastAES</code>和另一位<a class="link" href="https://github.com/sainz1407/Jujutsu-Kaisen-Phantom-Parade"  target="_blank" rel="noopener"
     >先辈的遗产</a>, 其实资源文件的加密是AES</p>
 <blockquote>
-<p><del>TMD花了我几天时间, 我还以为没变. 还是先辈拯救了我</del></p>
+<p><del>TMD花了我几天时间, 我还以为加密方法没变. 我都快哭晕在IDA里了</del></p>
 </blockquote>
-<h3 id="eof-1">EOF 1
+<h3 id="end-of-this-section">End of this section
 </h3><p>其实到这里大部分解包的基础就已经完成, 接下来是对解包出来的 <code>.unity3d</code> 进行加工.</p>
 <h2 id="资源的运用">资源的运用
 </h2><blockquote>
@@ -354,6 +429,8 @@
     </section>
     
     <section class="powerby">
+        
+            Powered by RedElectricity with Love❤️ <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>

@@ -70,3 +70,10 @@ name = "Weibo"
 url = "https://www.weibo.com/u/7891027455"
 [menu.social.params]
 icon = "brand-weibo"
+
+[[menu.social]]
+identifier = "email"
+name = "Email"
+url = "redelectricity@outlook.com"
+[menu.social.params]
+icon = "brand-mail"

@@ -1,0 +1,29 @@
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+<div id='{{ .Get "name" }}'></div>
+
+<script>
+    if ('{{ .Get "src" }}'.includes(".ggb")) {
+        var params = {
+            "filename": '{{ .Get "src" }}', 
+            "width": 800, 
+            "height": 600, 
+            "showToolBar": true, 
+            "showAlgebraInput": true, 
+            "showMenuBar": true 
+        };
+    } else {
+        var params = {
+            "material_id": '{{ .Get "src" }}', 
+            "width": 800, 
+            "height": 600, 
+            "showToolBar": true, 
+            "showAlgebraInput": true, 
+            "showMenuBar": true 
+        };
+    }
+    var applet = new GGBApplet(params, true);
+    window.addEventListener("load", function() {
+        applet.inject('{{ .Get "name" }}');
+    });
+</script>

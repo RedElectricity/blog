@@ -1,3 +1,9 @@
 [submodule "themes/hugo-theme-stack"]
 	path = themes/hugo-theme-stack
 	url = https://github.com/CaiJimmy/hugo-theme-stack/
+[submodule "themes/hugo-social-metadata"]
+	path = themes/hugo-social-metadata
+	url = https://github.com/msfjarvis/hugo-social-metadata.git
+[submodule "themes/hugo-chart"]
+	path = themes/hugo-chart
+	url = https://github.com/Shen-Yu/hugo-chart.git

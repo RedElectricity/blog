@@ -8,17 +8,17 @@ categories = ['呪術廻戦', '短篇文章/小说']
 
 ## 阅读前的提示
 
-**本文为脑洞If线, 若不喜欢+阅读困难可以选择看 Give you more than words (毕竟我是发电的时候写的) **
+**本文为脑洞If线, 若不喜欢+阅读困难可以选择看 Give you more than words (毕竟我是发电的时候写的)**
 
 时间线: [ Give you more than words ] 中交往后, 并且世界线异于[ Give you more than words ]
 
 虎子疑似有点OOC
 
-搭配教材: `Leon, S., de Pillis, L., & De Pillis, L. G. (2019). *Linear algebra with applications, 10th edition*. Pearson. `
+搭配教材: `Leon, S., de Pillis, L., & De Pillis, L. G. (2019). *Linear algebra with applications, 10th edition*. Pearson.`
 
 ## Chapter 1. Matrix World
 
-一天, 在宫城县仙台市杉泽第三高校的天台上, 虎杖和五条老师在吃小蛋糕中. 
+一天, 在宫城县仙台市杉泽第三高校的天台上, 虎杖和五条老师在吃小蛋糕中.
 
 "虎杖, 我想告诉你一件事", 五条悟说着, "希望你做好准备"
 
@@ -89,6 +89,7 @@ $$
 "计算器呢可以相当于万能扳手, 可以操控物体的矩阵", 五条边说, 边给虎杖展示如何使用.
 
 "你先把计算器对准一个要操控的物体, 此时计算器就会自动获取到物体的矩阵", 说着, 屏幕上便出现了蛋糕的矩阵
+
 $$
 \mathbf{Cake} = \begin{bmatrix}
 1 & 0 & 0 & 2 \newline
@@ -97,10 +98,13 @@ $$
 0 & 0 & 0 & 1 \newline
 \end{bmatrix}
 $$
+
 "接着, 你就要设定一个线性算子, 就例如说这个", 接着物体在计算器上输入了
+
 $$
 L(\mathbf{x}) = 3\mathbf{x}
 $$
+
 "蛋糕变大三倍了欸!", 虎杖兴奋的说着, "那么如果没有六眼是不是就不能看到这些东西了?"
 
 "也不是, 我做了一些眼镜使得未获得能力者能看到这一切. 但是若要长久地看到矩阵世界还是需要一些特殊的修行", 五条说着, "其实六眼的另外一种作用是能够看到物体矩阵的更详细参数"
@@ -117,7 +121,7 @@ $$
 
 {{</ rawhtml >}}
 
-随后世界又恢复正常了. 
+随后世界又恢复正常了.
 
 "看起来新的冒险要开始了", 虎杖兴奋地说道.
 

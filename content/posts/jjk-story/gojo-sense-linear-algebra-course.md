@@ -6,6 +6,8 @@ categories = ['呪術廻戦', '短篇文章/小说']
 
 +++
 
+{{< render_math >}}
+
 ## 阅读前的提示
 
 **本文为脑洞If线, 若不喜欢+阅读困难可以选择看 Give you more than words (毕竟我是发电的时候写的)**

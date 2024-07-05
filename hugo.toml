@@ -1,13 +1,14 @@
 baseURL = 'https://blog.134256.xyz/'
 languageCode = 'zh-cn'
 title = "Byron's Blog"
-theme = 'hugo-theme-stack'
+theme = ['hugo-chart', 'hugo-social-metadata', 'hugo-theme-stack']
 
 
 [Params]
 description = "Is what define us?"
 rssFullContent = true
 mainSections = ["posts"]
+twitterUsername = "@ElectricityRed"
 
 [[Params.widgets.homepage]]
 type = "search"
@@ -22,7 +23,7 @@ limit = 10
 [[Params.widgets.page]]
 type = "toc"
 
-[Params.Article]
+[Params.article]
 toc = true
 readingTime = true
 math = true

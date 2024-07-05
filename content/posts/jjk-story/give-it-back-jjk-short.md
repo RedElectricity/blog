@@ -37,7 +37,7 @@ categories = ['呪術廻戦', '短篇文章/小说']
 
 “就凭一个受肉也想打败我?”, 宿傩挑衅道, 他不相信一个受肉有原本五条悟的能力.
 
-“领域展开 『休戚与共』”, 虎杖的声音虽然伴随着虚弱, 但却充满了不屈的意志 
+“领域展开 『休戚与共』”, 虎杖的声音虽然伴随着虚弱, 但却充满了不屈的意志
 
 随着虎杖和五条同时喊出, 所有人被传送至虎杖的生的领域-冬日的海旁.
 
@@ -165,9 +165,13 @@ categories = ['呪術廻戦', '短篇文章/小说']
 
 "没关系, 我会和你解释清楚的..."
 
-[ Give it back 完 ]
+{{< rawhtml >}}
 
-后续: [Give you more than words]
+<center>[ Give it back 完 ]</center>
+
+{{< /rawhtml >}}
+
+后续: [Give you more than words](/posts/give-you-more-than-words-jjk-short/)
 
 ## Bounce Track
 

@@ -25,7 +25,7 @@ document.ready = function (callback) {
 }
 </script>
 
-<iframe src="https://marvinjs-demo.chemaxon.com/latest/marvinpack.html" frameborder="0" title="marvin_api"></iframe>
+<iframe src="https://re.edugen.wiley.com/resource/marvinjs-19.11.0/marvinpack.html" id="marvinjs-iframe" title="marvin_api"></iframe>
 <img src="" alt="" id='{{ .Get "name" }}'>
 <script>
 document.ready(function (){
@@ -34,7 +34,7 @@ document.ready(function (){
         // because of it, wait till the ready state to be sure the whole API is available
         marvinNameSpace.onReady(function() {
             marvin = marvinNameSpace
-            // TODO: Export Image
+            document.getElementById('{{ .Get "name" }}').src = marvin.ImageExporter.molToDataUrl('{{ .Get "mol" }}',"image/svg",{})
         })
     },function (error) {
         alert("Cannot retrieve marvin instance from iframe:"+error);

@@ -1,4 +1,7 @@
 {{- partial "helper/external" (dict "Context" . "Namespace" "KaTeX") -}}
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
 <script>
     window.onload = () => renderMathInElement(document.body, {
         delimiters: [

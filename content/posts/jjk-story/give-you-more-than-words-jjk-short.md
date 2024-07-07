@@ -1,7 +1,7 @@
 +++
 title = 'Give You More Than Words'
 date = 2024-07-02T20:03:50+08:00
-categories = ['呪術廻戦', '短篇文章/小说']
+categories = ['呪術廻戦', '连载文章/小说']
 +++
 
 ## 阅读前的小提示

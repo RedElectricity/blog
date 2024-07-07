@@ -25,11 +25,11 @@ categories = ['呪術廻戦', '相关设定']
 
 领域是向量空间的**子空间**, 表达式为
 $$
-S = \left\{ {\left[ {\begin{array}{*{20}{c}}
-x\\
-y\\
+S = \left\{ { {\begin{bmatrix}
+x\newline
+y\newline
 z
-\end{array}} \right]|算子} \right\}
+\end{bmatrix}} |算子} \right\}
 $$
 其中**算子**为领域的必中术式
 

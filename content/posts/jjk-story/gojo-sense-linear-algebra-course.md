@@ -190,10 +190,12 @@ $$
 "我们先来了解一下我们将要面对的东西", 便转身在黑板上写下了几串东西
 
 $$
-\left\{ {\begin{array}{*{20}{c}}
-{{x_1} + {x_2} = 2}\\
-{{x_1} - {x_2} = 2}
-\end{array}} \right.
+\begin{equation*}
+     \begin{cases}
+         {{x_1} + {x_2} = 2}\newline
+         {{x_1} - {x_2} = 2}
+     \end{cases}
+ \end{equation*}
 $$
 
 "大家, 知道这个要怎么解吗", 五条悟转过来问三小只.
@@ -202,16 +204,17 @@ $$
 
 "是这样做, 但是我们先不解, 先分解这组方程", 接着五条老师在黑板上写下
 $$
-\left[ {\begin{array}{*{20}{c}}
-1&1\\
+\begin{bmatrix}
+1&1\newline
 1&{ - 1}
-\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-{{x_1}}\\
+\end{bmatrix}
+\begin{bmatrix}
+{{x_1}}\newline
 {{x_2}}
-\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-2\\
+\end{bmatrix} = \begin{bmatrix}
+2\newline
 2
-\end{array}} \right]
+\end{bmatrix}
 $$
 "我先解释一下什么是矩阵, 简单来说就是个集合, 里面是按长方形方阵排列的实数或虚数. 矩阵中的元素称为标量", 接着五条老师在黑板画了一个向量矩阵
 
@@ -235,16 +238,16 @@ $$
 
 "其次是加法, 我们要注意的是两个矩阵要相等才能相加, 当然结果也是相同的维度.", 五条老师转身在黑板上写下了一个例子
 $$
-\left[ {\begin{array}{*{20}{c}}
-3&2&1\\
+\begin{bmatrix}
+3&2&1\newline
 4&5&6
-\end{array}} \right] + \left[ {\begin{array}{*{20}{c}}
-2&2&2\\
+\end{bmatrix} + \begin{bmatrix}
+2&2&2\newline
 1&2&3
-\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-5&4&3\\
+\end{bmatrix} = \begin{bmatrix}
+5&4&3\newline
 5&7&9
-\end{array}} \right]
+\end{bmatrix}
 $$
 "其运算规则是每个元素相加, 也就是$a_{ij} + b_{ij} = c_{ij}$"
 
@@ -254,29 +257,29 @@ $$
 
 "最后是矩阵乘法, 这个可能有点难大家要注意了", 接着五条在黑板上写下了一个例子
 $$
-\left[ {\begin{array}{*{20}{c}}
-3&{ - 2}\\
-2&4\\
+\begin{bmatrix}
+3&{ - 2}\newline
+2&4\newline
 1&{ - 3}
-\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-{ - 2}&1&3\\
+\end{bmatrix} \begin{bmatrix}
+{ - 2}&1&3\newline
 4&1&6
-\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
-{ - 14}&1&{ - 3}\\
-{12}&6&{30}\\
+\end{bmatrix} = \begin{bmatrix}
+{ - 14}&1&{ - 3}\newline
+{12}&6&{30}\newline
 { - 14}&{ - 2}&{ - 15}
-\end{array}} \right]
+\end{bmatrix}
 $$
 "我们只需要记住 *A行B列, 固列遍历行再标积* 即可", 五条说道, "我们以结果的$(2,3)$来演示"
 
 "首先A行B列的意思是输出结果是一个$A的行数\times B的列数$的矩阵, 我们先固列B3, 再遍历A的行, $(2,3)$就是需要乘以A的第二行, 也就是..."
 $$
-\left[ {\begin{array}{*{20}{c}}
+\begin{bmatrix}
 2&4
-\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-3\\
+\end{bmatrix} \begin{bmatrix}
+3\newline
 6
-\end{array}} \right] = 2 \times 3 + 4 \times 6 = 30
+\end{bmatrix} = 2 \times 3 + 4 \times 6 = 30
 $$
 "但是记住了, $\mathbf{AB} \neq \mathbf{BA}$"
 

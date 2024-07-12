@@ -93,6 +93,22 @@ $$
 
 首先需要消耗掉咒灵以及其队友的咒力, 其次就需要把咒灵血条清空即可.
 
+### 术式合集
+
+##### [ 核空间 ]
+
+咒语: 「万物」「核空间」(不要要求咏唱, 心中默念即可. 若领域自带[ 核空间 ]术式无需咏唱咒词便可直接使用)
+
+定义: 令$\mathbf{A}$为一个矩阵, 则令$N(\mathbf{A})$为线性方程$\mathbf{A}x=\mathbf{b}$的解, 写作
+$$
+N(\mathbf{A}) = \{x\in \mathbb{R} ^n | \mathbf{A}x=\mathbf{b}\}
+$$
+我们称$N(\mathbf{A})$为$\mathbb{R} ^ n$的一个子空间, 这个子空间称为$\mathbf{A}$的零空间或核空间.
+
+术式定义: 以术式展开者为原点($\vec{0} \in \mathbb{R}^3 _{sub}$), 选择的对象位于$\vec{x} \in \mathbb{R} ^3 _{sub}$(选择的对象可以多个), 当术式$\mathbf{A} \in N(\mathbf{B})$​施展时所有选择的物体便会吸引到原点.
+
+术式矩阵$\mathbf{A} \in N(\mathbf{B})$是一个指向原点的向量.
+
 ## 咒具
 
 ### 计算器
@@ -126,3 +142,15 @@ $$
 独立于日本警务厅的向量世界探索者(P.S. 日本警务厅委托), 由五条悟所在的**J**apan **P**ure **N**ature **S**cience研究所组织.
 
 幽夜咒者穿到向量世界会自动着装, 是类似于中世纪教徒+亚洲风的服装
+
+## 印象曲
+
+> 歌曲创作与咒数回战无任何相关性
+
+Main Theme: Raided - SHE'S
+
+大战之前: Night Crusing - agraph
+
+小甜饼 - 出任务系列: frozen heart - 8bite/Dyrox | song4love. - 8bite
+
+愤怒: Discord-disco - 十明

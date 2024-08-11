@@ -8,8 +8,6 @@ categories = ['呪術廻戦', '连载文章/小说']
 
 前篇: [Give you back](/posts/give-it-back-jjk-short/)
 
-Couple: [ 285 x 16 ]
-
 ## Side A [ Renew ]
 
 ### Track 1 Birthday

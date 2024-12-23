@@ -3,12 +3,17 @@ title = "Jujutsu Kaisen Phantom Parade - Unpack log"
 date = 2024-06-24T01:24:32
 draft = false
 categories = ['Reverse', '呪術廻戦']
+image = "feature_images/jujutsuphanpara_dump.png"
 +++
+
+{{< rawhtml >}}
+<center>进来前先大声喊: <audio controls src="/audio/jjk_para.ogg"></audio></center>
+{{< /rawhtml >}}
 
 > 本文将会持续更新
 
 > 本文仅供学习使用, 请勿用于各种非个人的行为或者商业性行为
-> 😭先辈的遗产真是节省了我大部分时间
+> For further detail, contact my email.
 
 ## 前言
 
@@ -113,7 +118,7 @@ message Data {
 
 当你拖进IDA找到对应的解密函数时其实根本就找不出先辈找出来的那几个函数, 因此我们便可以判断不是和Nire等一样的加密.
 
-注意到程序调用了`FastAES`和另一位[先辈的遗产](https://github.com/sainz1407/Jujutsu-Kaisen-Phantom-Parade), 其实资源文件的加密是AES
+注意到程序调用了`FastAES`, 其实资源文件的加密是AES
 
 > ~~TMD花了我几天时间, 我还以为加密方法没变. 我都快哭晕在IDA里了~~
 
@@ -123,4 +128,91 @@ message Data {
 
 ## 资源的运用
 
-> ERROR: 本Section正在施工中...
+> 本人已完成最基础的解包器的编写, 需要的可以带上GitHub ID+证明有阅读C#代码的能力发送邮件来. 为了避免被橄榄, 仓库是Private的.
+
+### 关于处理未下载的资源
+
+在前文的Protofile中有定义字段
+
+```protobuf
+string urlFormat = 5;
+```
+
+而在提取之后, 我们得到这个字段对应的值
+
+```json
+{"UrlFormat":"https://asset-cdn.jujutsuphanpara.jp/{o}"}
+```
+
+其中很明显是字符串插值, 其中变量`o`经过我的测试之后对应的字段是
+
+```protobuf
+string md5 = 10; //md5={7}
+```
+
+放到浏览器中便可以下载, 但是特别注意的是资源服务器是锁IP的, 需要日区IP才可以下载.
+
+### 资源中人物的使用技术栈
+
+每个人物都有对应的战斗骨骼, 出勤小人骨骼, 动态立绘以及动态卡面.
+
+其中使用到了`Criware` `Live2D` `Spine`.
+
+都是日厂游戏老套路了, 如果下面看不懂可以选择另寻教程.
+
+#### 关于解决动态卡面等`Criware`加密过后的视频
+
+可以使用第三方的工具`CRID(.usm)Demux Tool`(搜一下就能得到)解密.
+
+使用以下Powershell脚本
+
+```powershell
+$usms = Get-ChildItem -Filter "*.usm"
+
+foreach ($item in $usms) {
+	.\crid_mod.exe $item -a f8a0f8f8 -b 001bcd62 -v -x
+	Remove-Item $item
+}
+```
+
+#### 关于解决动态立绘等`Live2D`预处理过后的`Live2D`模型
+
+解包过后在`live2d`文件夹下会出现两个目录, `model`和`motion`. 其实前辈写过一个`UnityLive2DExtractor`, 但是年久失修.
+
+其实最重要的是提取到`moc3`文件, 这个文件对应着package中的名叫`moc`的`MonoBehaviour`, 以Raw方式提出出来, 剔除掉前面的几个字节到`MOC3`这个魔数开始便是可以正常使用的`moc3`文件.
+
+然后模型贴图则是package为数不多的`Texture2D`.
+
+关于每个角色对应的`motion`文件, 则在`motion`文件夹中, 其中每个角色可能对应不止一个motion package(例如说虎杖的motion就有normal和baseball, 对应着两套皮肤不同的motion).
+
+当然直接提出来的motion是不能用的, 应为是unity特有记录动画的格式, 并且每个部分对于的path也是一串乱码. 但这并非是乱码, 这是每个model的部分的full path经过crc编码后得到的产物, 所以要先使用, 你需要读取`moc3`文件中的每一个
+
+```
+Parts/...
+Parameters/...
+```
+
+再带回去替换. 但是要注意的是, 有一部分的crc可能没有, 跳过去就好了.
+
+正常的话应该是这样
+
+![Normal Live2D](images/jjk_para/live2d_normal.png)
+
+#### 关于解决`Spine`的骨骼
+
+这个是最好解决的, 找到每个角色对于的骨骼(自己翻, 我忘了). 打开package里面搜索`*.skel`和`*.atlas`, 这两个是骨骼的定义文件以及贴图定义文件, 以Raw模式导出, 不需要改文件头就能使用. 另外还需要找到package中唯一的贴图文件.
+
+应为package是Spine预处理过的, 所以需要解包贴图(软件内).
+
+![Normal Spine](images/jjk_para/spine_normal.png)
+
+### 关于提取台词
+
+台词文件位于`adv/script`中, 每一个stage都对应一个package, 并且package里面的script文件层次很简明, 自己写个脚本提取就好了.
+
+## End of File
+
+至此, Jujutsu Kaisen Phantom Parade已经大体上解包完成. 本人正是抱着对虎杖的喜爱才终于突破困难在短短几天之内dump出来. 最后再放张虎杖礼服的插画.
+
+![Yuji](images/jjk_para/yuji.png)
+

@@ -196,7 +196,7 @@ Parameters/...
 
 正常的话应该是这样
 
-![Normal Live2D](images/jjk_para/live2d_normal.png)
+![Normal Live2D](/live2d_normal.png)
 
 #### 关于解决`Spine`的骨骼
 
@@ -204,7 +204,7 @@ Parameters/...
 
 应为package是Spine预处理过的, 所以需要解包贴图(软件内).
 
-![Normal Spine](images/jjk_para/spine_normal.png)
+![Normal Spine](/spine_normal.png)
 
 ### 关于提取台词
 
@@ -214,5 +214,5 @@ Parameters/...
 
 至此, Jujutsu Kaisen Phantom Parade已经大体上解包完成. 本人正是抱着对虎杖的喜爱才终于突破困难在短短几天之内dump出来. 最后再放张虎杖礼服的插画.
 
-![Yuji](images/jjk_para/yuji.png)
+![Yuji](/yuji.png)
 

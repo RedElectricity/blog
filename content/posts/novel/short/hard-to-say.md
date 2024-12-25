@@ -8,7 +8,7 @@ image = "feature_images/hard_to_say.png"
 
 # 难以言表
 
-> Before you read... 不涉及到现实中任何人哈, 不要对号入座:wink:
+> Before you read... 不涉及到现实中任何人哈, 不要对号入座😉. 本文为双男主暗恋BE文.
 
 ---
 

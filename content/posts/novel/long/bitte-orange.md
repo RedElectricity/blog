@@ -10,6 +10,10 @@ image = "feature_images/bitte-orange.png"
 
 > 我与我的初恋始于高台, 失于彼此. 终称为对方生命中的过客.
 
+{{< rawhtml >}}
+<center>有声书: <audio controls src="/audio/audio_book/bitte-orange.ogg"></audio></center>
+{{< /rawhtml >}}
+
 ## Preface
 
 本篇素双男主BE校园文. 主角是: 陈乐(我)x江淮.

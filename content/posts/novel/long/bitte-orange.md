@@ -1,9 +1,10 @@
 +++
-title = 'Bitte Orange 苦橙'
+title = 'Bitter Orange 苦橙'
 date = 2024-12-26T18:56:30+08:00
 draft = false
 categories = ['中篇文章/小说']
 image = "feature_images/bitte-orange.png"
+
 +++
 
 # 苦橙

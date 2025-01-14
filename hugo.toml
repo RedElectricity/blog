@@ -1,8 +1,9 @@
 baseURL = 'https://blog.134256.xyz/'
 languageCode = 'zh-cn'
 title = "Byron's Blog"
-theme = ['hugo-chart', 'hugo-social-metadata', 'hugo-theme-stack']
+theme = ['hugo-admonitions', 'hugo-chart', 'hugo-social-metadata', 'hugo-theme-stack']
 
+ignoreLogs = ['warning-goldmark-raw-html']
 
 [Params]
 description = "Let's rewrite the world."

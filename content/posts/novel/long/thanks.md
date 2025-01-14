@@ -12,7 +12,7 @@ image = "feature_images/thanks.png"
 >  感谢你走进我生命中的两万天, 将我救赎.
 
 {{< rawhtml >}}
-<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=3070415108&auto=1&height=66"></iframe></center>
+<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=3070415108&auto=0&height=66"></iframe></center>
 
 {{< /rawhtml >}}
 > 有声书源文件太大, 故放到网易云的播客里, 点击上方控件便可播放

@@ -1,7 +1,7 @@
 +++
 title = 'Promise 承诺'
 date = 2024-12-29T22:24:38+08:00
-draft = false
+draft = true
 categories = ['短篇文章/小说']
 image = "feature_images/promise.png"
 +++

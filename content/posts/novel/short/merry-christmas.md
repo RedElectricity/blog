@@ -1,9 +1,10 @@
 +++
-title = 'Merry Christmas'
-date = 2024-12-25T18:44:51+08:00
+title = "Merry Christmas"
+date = 2024-12-25T10:44:51.000Z
 draft = false
-categories = ['短篇文章/小说']
+categories = [ "短篇文章/小说" ]
 image = "feature_images/merry-christmas.png"
+description = "Merry... Christmas..."
 +++
 
 # Merry Christmas

@@ -1,9 +1,10 @@
 +++
-title = 'Hard to Say 难以言表'
-date = 2024-12-23T20:10:51+08:00
+title = "Hard to Say 难以言表"
+date = 2024-12-23T12:10:51.000Z
 draft = false
-categories = ['短篇文章/小说']
+categories = [ "短篇文章/小说" ]
 image = "feature_images/hard_to_say.png"
+description = "青春宛如指尖流沙，悄然逝去。对于他的喜欢，我也藏于心中，封藏一辈子。诸多暗恋，常始于惊鸿一瞥，止于青涩袒露；其间背负的情思重荷，恰似繁花着锦，密雨藏雷。"
 +++
 
 # 难以言表

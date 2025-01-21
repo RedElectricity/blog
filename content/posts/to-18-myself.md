@@ -1,10 +1,9 @@
 +++
-title = '致十八岁的自己'
-date = 2025-01-08T00:36:38+08:00
-draft = true
-categories = ['随笔']
+title = "致十八岁的自己"
+date = 2025-01-07T16:36:38.000Z
+draft = false
+categories = [ "随笔" ]
 image = "feature_images/to_18_myself.jpg"
-
 +++
 
 很高兴, 自己终于成年了. 在这成年之际, 我有很多话想对自己说. 也有很多目标想对自己许下.

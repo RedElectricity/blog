@@ -1,10 +1,10 @@
 +++
-title = 'Bitter Orange 苦橙'
-date = 2024-12-26T18:56:30+08:00
+title = "Bitter Orange 苦橙"
+date = 2024-12-26T10:56:30.000Z
 draft = false
-categories = ['中篇文章/小说']
+categories = [ "中篇文章/小说" ]
 image = "feature_images/bitte-orange.png"
-
+description = "我与我的初恋始于高台, 失于彼此. 终称为对方生命中的过客."
 +++
 
 # 苦橙

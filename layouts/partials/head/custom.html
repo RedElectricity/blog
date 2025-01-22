@@ -1,6 +1,80 @@
 {{ if .Store.Get "hasMermaid" }}
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    import mermaid from 'https://unpkg.com/mermaid/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    .flowchart {
+      display: block;  
+      margin: auto;  
+    }
+  </style>
+{{ end }}
+
+{{ if .Store.Get "hasMol" }}
+  <link rel="stylesheet" href="/css/ChemDoodleWeb.css" type="text/css">
+  <script type="text/javascript" src="/js/ChemDoodleWeb.js"></script>
+
+  <script>
+    function generateUUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0,
+              v = c == 'x'? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+      });
+    }
+    console.log('The version of ChemDoodle installed is: ' + ChemDoodle.getVersion());
+
+    document.ready = function (callback) {
+      ///兼容FF,Google
+      if (document.addEventListener) {
+          document.addEventListener('DOMContentLoaded', function () {
+              document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+              callback();
+          }, false)
+      }
+       //兼容IE
+      else if (document.attachEvent) {
+          document.attachEvent('onreadystatechange', function () {
+                if (document.readyState == "complete") {
+                          document.detachEvent("onreadystatechange", arguments.callee);
+                          callback();
+                 }
+          })
+      }
+      else if (document.lastChild == document.body) {
+          callback();
+      }
+    }
+
+    document.ready(function () {
+      Array.from(document.getElementsByClassName("mol")).forEach(
+        function(el) {
+          let canvasId = generateUUID();
+          let molFile = el.textContent
+          let mol = ChemDoodle.readMOL(molFile);
+          el.outerHTML = `<canvas style="display: block;margin: auto;" id="${canvasId}">${el.innerText}</canvas>`;
+          var viewer = new ChemDoodle.ViewerCanvas(canvasId, 150, 150);
+          viewer.drawChildExtras = function(ctx){
+            ctx.fillStyle = 'black';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.font = 'bold 10px sans-serif';
+            ctx.fillText('Click to copy MOL', this.width/2, this.height-5);
+          };
+          viewer.click = function(e){
+            navigator.clipboard.writeText(molFile).then(
+              function () {
+                alert("Copy MOL successfully");
+              },
+              function () {
+                alert("Fail to copy MOL");
+              },
+            );
+          }
+          viewer.loadMolecule(mol);
+        }
+      );
+    });    
   </script>
 {{ end }}

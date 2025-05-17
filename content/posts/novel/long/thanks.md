@@ -5,6 +5,8 @@ draft = false
 categories = [ "中篇文章/小说" ]
 image = "feature_images/thanks.png"
 description = "感谢你走进我生命中的两万天, 将我救赎."
+tags = [ "救赎", "值得一看" ]
+slug = "感谢"
 +++
 
 # 感谢

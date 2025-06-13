@@ -1023,7 +1023,7 @@
             showNotification('正在解析图集，请稍候...');
             
             // 使用示例API（在实际应用中替换为真实的API端点）
-            fetch(`https://douyin.wtf/api/hybrid/video_data?url=${encodeURIComponent(url)}`, {
+            fetch(`https://api.codetabs.com/v1/proxy/?quest=https://douyin.wtf/api/hybrid/video_data?url=${encodeURIComponent(url)}`, {
                 mode: 'cors', // 默认值，可以省略
                 headers: {
                     'Content-Type': 'application/json',

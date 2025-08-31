@@ -1,7 +1,7 @@
 +++
 title = "Thanks 感谢"
 date = 2025-01-02T11:27:18.000Z
-draft = false
+draft = true
 categories = [ "中篇文章/小说" ]
 image = "feature_images/thanks.png"
 description = "感谢你走进我生命中的两万天, 将我救赎."
